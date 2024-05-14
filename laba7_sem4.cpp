@@ -4,44 +4,44 @@
 #include <chrono>
 
 int main() {
-    // Пример сравнения std::vector и std::list по объему занимаемой памяти
-    std::vector<int> vec; // Создание вектора
-    std::list<int> lst; // Создание списка
+    // ГЏГ°ГЁГ¬ГҐГ° Г±Г°Г ГўГ­ГҐГ­ГЁГї std::vector ГЁ std::list ГЇГ® Г®ГЎГєГҐГ¬Гі Г§Г Г­ГЁГ¬Г ГҐГ¬Г®Г© ГЇГ Г¬ГїГІГЁ
+    std::vector<int> vec; // Г‘Г®Г§Г¤Г Г­ГЁГҐ ГўГҐГЄГІГ®Г°a
+    std::list<int> lst; // Г‘Г®Г§Г¤Г Г­ГЁГҐ Г±ГЇГЁГ±ГЄГ 
 
-    int n = 1000000; // Количество элементов
+    int n = 1000000; // ГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў
 
-    // Заполнение вектора и списка элементами
+    // Г‡Г ГЇГ®Г«Г­ГҐГ­ГЁГҐ ГўГҐГЄГІГ®Г°Г  ГЁ Г±ГЇГЁГ±ГЄГ  ГЅГ«ГҐГ¬ГҐГ­ГІГ Г¬ГЁ
     for (int i = 0; i < n; ++i) {
-        vec.push_back(i); // Добавление элемента в вектор
-        lst.push_back(i); // Добавление элемента в список
+        vec.push_back(i); // Г„Г®ГЎГ ГўГ«ГҐГ­ГЁГҐ ГЅГ«ГҐГ¬ГҐГ­ГІГ  Гў ГўГҐГЄГІГ®Г°
+        lst.push_back(i); // Г„Г®ГЎГ ГўГ«ГҐГ­ГЁГҐ ГЅГ«ГҐГ¬ГҐГ­ГІГ  Гў Г±ГЇГЁГ±Г®ГЄ
     }
 
-    // Вывод информации о памяти, занимаемой каждым контейнером
+    // Г‚Г»ГўГ®Г¤ ГЁГ­ГґГ®Г°Г¬Г Г¶ГЁГЁ Г® ГЇГ Г¬ГїГІГЁ, Г§Г Г­ГЁГ¬Г ГҐГ¬Г®Г© ГЄГ Г¦Г¤Г»Г¬ ГЄГ®Г­ГІГҐГ©Г­ГҐГ°Г®Г¬
     std::cout << "Memory used by vector: " << sizeof(vec) + sizeof(int) * vec.capacity() << " bytes\n";
     std::cout << "Memory used by list: " << sizeof(lst) + sizeof(int) * lst.size() << " bytes\n";
 
-    // Пример сравнения скорости работы std::vector и std::list
-    auto start = std::chrono::high_resolution_clock::now(); // Засекаем время
+    // ГЏГ°ГЁГ¬ГҐГ° Г±Г°Г ГўГ­ГҐГ­ГЁГї Г±ГЄГ®Г°Г®Г±ГІГЁ Г°Г ГЎГ®ГІГ» std::vector ГЁ std::list
+    auto start = std::chrono::high_resolution_clock::now(); // Г‡Г Г±ГҐГЄГ ГҐГ¬ ГўГ°ГҐГ¬Гї
 
-    // Доступ к элементам вектора по индексу
+    // Г„Г®Г±ГІГіГЇ ГЄ ГЅГ«ГҐГ¬ГҐГ­ГІГ Г¬ ГўГҐГЄГІГ®Г°Г  ГЇГ® ГЁГ­Г¤ГҐГЄГ±Гі
     for (int i = 0; i < n; ++i) {
         vec[i];
     }
 
-    auto end = std::chrono::high_resolution_clock::now(); // Засекаем время окончания операции
-    std::chrono::duration<double> vector_time = end - start; // Вычисляем время выполнения операции
-    std::cout << "Time taken by vector: " << vector_time.count() << " seconds\n"; // Выводим время работы вектора
+    auto end = std::chrono::high_resolution_clock::now(); // Г‡Г Г±ГҐГЄГ ГҐГ¬ ГўГ°ГҐГ¬Гї Г®ГЄГ®Г­Г·Г Г­ГЁГї Г®ГЇГҐГ°Г Г¶ГЁГЁ
+    std::chrono::duration<double> vector_time = end - start; // Г‚Г»Г·ГЁГ±Г«ГїГҐГ¬ ГўГ°ГҐГ¬Гї ГўГ»ГЇГ®Г«Г­ГҐГ­ГЁГї Г®ГЇГҐГ°Г Г¶ГЁГЁ
+    std::cout << "Time taken by vector: " << vector_time.count() << " seconds\n"; // Г‚Г»ГўГ®Г¤ГЁГ¬ ГўГ°ГҐГ¬Гї Г°Г ГЎГ®ГІГ» ГўГҐГЄГІГ®Г°Г 
 
-    start = std::chrono::high_resolution_clock::now(); // Засекаем время для списка
+    start = std::chrono::high_resolution_clock::now(); // Г‡Г Г±ГҐГЄГ ГҐГ¬ ГўГ°ГҐГ¬Гї Г¤Г«Гї Г±ГЇГЁГ±ГЄГ 
 
-    // Доступ к элементам списка через итератор
+    // Г„Г®Г±ГІГіГЇ ГЄ ГЅГ«ГҐГ¬ГҐГ­ГІГ Г¬ Г±ГЇГЁГ±ГЄГ  Г·ГҐГ°ГҐГ§ ГЁГІГҐГ°Г ГІГ®Г°
     for (auto it = lst.begin(); it != lst.end(); ++it) {
         *it;
     }
 
-    end = std::chrono::high_resolution_clock::now(); // Засекаем время окончания операции для списка
-    std::chrono::duration<double> list_time = end - start; // Вычисляем время выполнения операции для списка
-    std::cout << "Time taken by list: " << list_time.count() << " seconds\n"; // Выводим время работы списка
+    end = std::chrono::high_resolution_clock::now(); // Г‡Г Г±ГҐГЄГ ГҐГ¬ ГўГ°ГҐГ¬Гї Г®ГЄГ®Г­Г·Г Г­ГЁГї Г®ГЇГҐГ°Г Г¶ГЁГЁ Г¤Г«Гї Г±ГЇГЁГ±ГЄГ 
+    std::chrono::duration<double> list_time = end - start; // Г‚Г»Г·ГЁГ±Г«ГїГҐГ¬ ГўГ°ГҐГ¬Гї ГўГ»ГЇГ®Г«Г­ГҐГ­ГЁГї Г®ГЇГҐГ°Г Г¶ГЁГЁ Г¤Г«Гї Г±ГЇГЁГ±ГЄГ 
+    std::cout << "Time taken by list: " << list_time.count() << " seconds\n"; // Г‚Г»ГўГ®Г¤ГЁГ¬ ГўГ°ГҐГ¬Гї Г°Г ГЎГ®ГІГ» Г±ГЇГЁГ±ГЄГ 
 
     return 0;
 }
